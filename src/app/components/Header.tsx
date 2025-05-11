@@ -36,16 +36,25 @@ export default function Header() {
           Ramongc8
         </div>
         <nav className="space-x-6 hidden sm:block">
-          <Link href="#home" className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition">
+          <Link
+            href="#home"
+            className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition"
+          >
             Home
           </Link>
-          <Link href="#projetos" className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition">
-            Projetos
+          <Link href="/projetos" className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition">
+          Projetos
           </Link>
-          <Link href="#sobre" className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition">
+          <Link
+            href="#sobre"
+            className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition"
+          >
             Sobre mim
           </Link>
-          <Link href="#contato" className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition">
+          <Link
+            href="#contato"
+            className="text-gray-600 dark:text-gray-300 hover:text-blue-500 transition"
+          >
             Contato
           </Link>
         </nav>
