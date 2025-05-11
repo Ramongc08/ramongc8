@@ -1,15 +1,14 @@
-"use client";
-
+"use client"; 
 import { useEffect, useState } from "react";
 import styles from "./Hero.module.css";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-
 import {
   SiJavascript, SiHtml5, SiCss3, SiSwift, SiMysql, SiReact,
   SiReactrouter, SiBootstrap, SiTailwindcss, SiTypescript, SiPython,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
+
 
 const technologies = [
   { icon: <SiHtml5 className="text-orange-500" />, label: "HTML5" },
@@ -29,23 +28,32 @@ const technologies = [
 export default function Hero() {
   const [typingKey, setTypingKey] = useState(0);
   const [done, setDone] = useState(false);
+  const [isMounted, setIsMounted] = useState(false); 
+
 
   useEffect(() => {
-    const animate = () => {
-      setTypingKey((prev) => prev + 1);
-      setDone(false);
-      setTimeout(() => setDone(true), 3000);
-    };
+    setIsMounted(true); 
 
-    animate();
-    const interval = setInterval(animate, 8000);
-    return () => clearInterval(interval);
+    if (typeof window !== 'undefined') { 
+      const animate = () => {
+        setTypingKey((prev) => prev + 1);
+        setDone(false);
+        setTimeout(() => setDone(true), 3000);
+      };
+
+      animate();
+      const interval = setInterval(animate, 8000);
+      return () => clearInterval(interval);
+    }
   }, []);
+
+  
+  if (!isMounted) return null;
 
   return (
     <section className="relative flex flex-col items-center justify-center h-screen w-screen bg-black overflow-hidden text-white px-4">
       
-      {/* Bem-vindo acima do logo */}
+      
       <motion.p
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -55,7 +63,7 @@ export default function Hero() {
         Bem-vindo ao meu portfólio
       </motion.p>
 
-      {/* Logo com gradiente */}
+
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -118,9 +126,9 @@ function TechIcon({ icon, label }: TechIconProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4 }}
-      className="flex flex-col items-center gap-3 justify-center hover:scale-105 active:scale-95 transition-transform p-4 rounded-lg"
+      className="flex flex-col items-center gap-3 justify-center hover:scale-110 active:scale-95 transition-transform p-4 rounded-lg"
     >
-      <div className="text-3xl">{icon}</div>
+      <div className="text-3xl text-white hover:text-[#8C56F4]">{icon}</div> 
       <span className="text-white">{label}</span>
     </motion.div>
   );
